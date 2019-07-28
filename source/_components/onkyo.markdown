@@ -25,9 +25,15 @@ media_player:
     name: receiver
     sources:
       pc: 'HTPC'
+    zones:
+      - zone: Zone2
+        enabled: True
+        name: NAME
+      - zone: Zone3
+        enabled: False   
 ```
 
- If your receiver has second or third zone’s available, they are displayed as additional media players with the same functionality as the main zone.
+ If your receiver has second or third zone’s available, they are displayed as additional media players with the same functionality as the main zone. If you define zones section in config only confured zones will be available.
 
 {% configuration %}
 host:
@@ -46,6 +52,19 @@ sources:
   description: A list of mappings from source to source name. Valid sources can be found below. A default list will be used if no source mapping is specified.
   required: false
   type: list
+zones:
+  description: List of additional zones to be activated. They are displayed as additional media players with the same functionality Main Zone of the device supports.
+  required: false
+  type: list
+  keys:
+    zone:
+      description: Zone which should be activated. Valid options are `Zone2` and `Zone3`.
+      required: true
+      type: string
+    name:
+      description: Name of the zone. If not set the name of the main device + zoneas a suffix is taken.
+      required: false
+      type: string  
 {% endconfiguration %}
 
 List of source names:
